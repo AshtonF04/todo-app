@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Button, Platform, KeyboardAvoidingView, SafeAreaView, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import Task from './components/Task';
 
 export default function App() {
@@ -10,14 +10,19 @@ export default function App() {
 
             <View style={styles.items}>
               <Task text="Study For Exam"/>
-              <Task text="Do Laundry"/>
               <Task text="Write Code"/>
-              <Task text="Make Lunch For Tomorrow"/>
+            
             </View>
         </View>
         <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.addWrapper}>
+          
+          <TextInput style={styles.textInput}>Write a task</TextInput>
+          <TouchableOpacity style={styles.addButton}>
+            <Text style={styles.addtext}>+</Text>
+          </TouchableOpacity>
+         
         </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -39,4 +44,31 @@ const styles = StyleSheet.create({
   items: {
     marginVertical: 25,
   },
+  addWrapper: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 60,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+  },
+  textInput: {
+    backgroundColor: "#FFF",
+    paddingVertical: 20,
+    borderRadius: 60,
+    width: 275,
+    textAlign: 'center',
+  },
+  addButton: {
+    backgroundColor: "#FFF",
+    width: 55,
+    height: 55,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 60,
+  },
+  addtext: {
+    fontSize: 30,
+  },  
 });
